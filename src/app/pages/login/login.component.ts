@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { LoginResponse } from '../../interfaces/login-response';
 import { User } from '../../interfaces/user';
 import { Router, RouterModule } from '@angular/router';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-login',
@@ -36,7 +37,13 @@ export class LoginComponent {
         this.router.navigateByUrl("/")
       },
       error: ()=>{
-        
+        Swal.fire({
+          title: "Oops!",
+          text: "Ha ocurrido un error",
+          icon: "error",
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     })
   }

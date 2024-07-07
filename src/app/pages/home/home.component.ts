@@ -5,6 +5,7 @@ import { DivisaPipe } from '../../pipes/divisa.pipe';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { FilterVehiclesPipe } from '../../pipes/filter-vehicles.pipe';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,15 @@ export class HomeComponent {
       next: (response)=>{
         this.vehicles = response as Vehicle[]
       },
-      error: ()=>{}
+      error: ()=>{
+        Swal.fire({
+          title: "Oops!",
+          text: "Ha ocurrido un error",
+          icon: "error",
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
     })
   }
 }
